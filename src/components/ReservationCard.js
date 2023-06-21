@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { removeReservation } from "../features/reservationSlice";
 import { addCustomer } from "../features/customerSlice";
+import { v4 as uuid} from "uuid"
 
 export default function ReservationCard({ name, index }) {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export default function ReservationCard({ name, index }) {
       onClick={() => {
         dispatch(removeReservation(index));
         dispatch(addCustomer({
-            id: "",
+            id: uuid(),
             name,
             food: []
         }));
